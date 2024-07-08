@@ -35,7 +35,7 @@
         }
     });
     $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+        $('html, body').animate({scrollTop: 0}, 100, 'easeInOutExpo');
         return false;
     });
 
@@ -43,7 +43,7 @@
     // Testimonials carousel
     $('.testimonial-carousel').owlCarousel({
         autoplay: true,
-        smartSpeed: 1000,
+        smartSpeed: 100,
         loop: true,
         nav: false,
         dots: true,
