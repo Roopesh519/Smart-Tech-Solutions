@@ -59,7 +59,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     const lines = [
-        'Welcome to Smart Tech Solutions'
+        'Welcome to'
     ];
 
     const typingTextElement = document.getElementById('typing-text');
@@ -101,4 +101,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
     startTypingEffect();
 });
-
