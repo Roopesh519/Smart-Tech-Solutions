@@ -59,10 +59,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     const lines = [
-        'Currently an SDET at 7EDGE.',
-        'web developer, designer',
-        'android app developer',
-        'designer'
+        'Welcome to Smart Tech Solutions'
     ];
 
     const typingTextElement = document.getElementById('typing-text');
