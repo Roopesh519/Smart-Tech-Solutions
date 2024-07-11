@@ -59,7 +59,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     const lines = [
-        'Welcome to'
+        'Transforming Visions into Reality with Smart Tech Engineering'
     ];
 
     const typingTextElement = document.getElementById('typing-text');
