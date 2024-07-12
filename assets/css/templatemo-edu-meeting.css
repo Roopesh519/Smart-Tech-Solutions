@@ -1394,6 +1394,22 @@ section.our-facts h2 {
   margin-left: 3px;
 }
 
+.add .count-digit:after {
+  content: '+';
+  margin-left: 3px;
+}
+
+.support .count-digit {
+  display: inline-block;
+}
+
+.support .count-symbol {
+  display: inline-block;
+  font-size: 1.5em;
+  color: #eee;
+  margin: 0 3px;
+}
+
 .count-digit {
     margin: 5px 0px;
     color: #f5a425;
@@ -1414,7 +1430,7 @@ section.our-facts h2 {
 section.our-facts .video {
   text-align: center;
   margin-left: 70px;
-  background-image: url(../images/video-item-bg.jpg);
+  background-image: url(../images/cold-storage-facts.jpg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
