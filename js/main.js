@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
     startTypingEffect();
 });
 
-// chatbot js
+//---------------------------chatbot js---------------------------------------
 
 // A simple chatbot that responds with some predefined answers
 function chatbot(input) {
@@ -174,6 +174,6 @@ document.querySelector(".chatbot-toggler").addEventListener("click", function() 
 });
 
 // Add a click event listener to the chatbot close button
-document.querySelector(".chatbot header .close-btn").addEventListener("click", function() {
+document.querySelector(".chatbot .chatbot-header .close-btn").addEventListener("click", function() {
     document.body.classList.remove("show-chatbot");
 });
