@@ -109,15 +109,22 @@ document.addEventListener('DOMContentLoaded', function() {
 function chatbot(input) {
     let output = "";
     input = input.toLowerCase();
-    if (input.includes("hello") || input.includes("hi")) {
+
+    const greetings = ["hello", "hi", "hey"];
+    const howAreYou = ["how are you", "how's it going", "how are you doing"];
+    const nameQuestion = ["what is your name", "who are you"];
+    const capabilities = ["what can you do", "what are your capabilities"];
+    const jokeRequest = ["tell me a joke", "make me laugh", "say something funny"];
+
+    if (greetings.some(greeting => input.includes(greeting))) {
         output = "Hello, nice to meet you!";
-    } else if (input.includes("how are you")) {
+    } else if (howAreYou.some(question => input.includes(question))) {
         output = "I'm doing fine, thank you for asking.";
-    } else if (input.includes("what is your name")) {
+    } else if (nameQuestion.some(question => input.includes(question))) {
         output = "My name is Jarvis, I'm a chatbot.";
-    } else if (input.includes("what can you do")) {
+    } else if (capabilities.some(question => input.includes(question))) {
         output = "I can chat with you and answer some simple questions.";
-    } else if (input.includes("tell me a joke")) {
+    } else if (jokeRequest.some(request => input.includes(request))) {
         output = "Why did the chicken go to the seance? To get to the other side.";
     } else {
         output = "Sorry, I don't understand that. Please try something else.";
