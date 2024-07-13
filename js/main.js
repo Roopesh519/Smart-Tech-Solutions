@@ -116,21 +116,82 @@ function chatbot(input) {
     const capabilities = ["what can you do", "what are your capabilities"];
     const jokeRequest = ["tell me a joke", "make me laugh", "say something funny"];
 
+    const coldRoomQuestions = [
+        "what is a cold room", "explain cold room storage", "tell me about cold rooms",
+        "how does a cold room work", "uses of cold room storage",
+        "cold room construction", "cold room applications", "cold room temperature range",
+        "cold room panels", "cold room accessories", "cold room standard sizes"
+    ];
+    const coldRoomAnswers = [
+        "A cold room is a large refrigerated space designed to store perishable goods at low temperatures.",
+        "Cold room storage is used to preserve the freshness of perishable items such as food, pharmaceuticals, and flowers by maintaining a controlled low temperature.",
+        "Cold rooms are essential for industries that require storage of temperature-sensitive products to extend their shelf life and ensure safety.",
+        "Our cold rooms are constructed with high-quality PUF panels, available in thicknesses of 60, 80, 100, 125, and 150 mm.",
+        "The temperature range of our cold rooms spans from +15°C to -40°C, ensuring optimal storage conditions for various applications.",
+        "We offer a variety of accessories including hatch doors, tri-action pressure ventilators, and semi-transparent PVC strip curtains.",
+        "Our cold rooms are available in various standard sizes to meet your specific requirements, ensuring the perfect fit for small or large-scale operations.",
+        "For more information or to request a quote, please contact us at our toll-free number 1800 102 4615 or email us at info@bharatref.in."
+    ];
+
+    const interiorWorksQuestions = [
+        "what is interior work", "explain interior design", "what do interior works involve",
+        "types of interior work", "services for interior works"
+    ];
+    const interiorWorksAnswers = [
+        "Interior work involves designing and creating functional and aesthetically pleasing indoor spaces.",
+        "Interior design includes planning, selecting, and arranging elements like furniture, lighting, and decor to enhance the look and functionality of a space.",
+        "Interior works cover a range of services including space planning, color schemes, material selection, and overall design execution."
+    ];
+
+    const civilWorksQuestions = [
+        "what is civil work", "explain civil engineering", "what do civil works involve",
+        "types of civil work", "services for civil works"
+    ];
+    const civilWorksAnswers = [
+        "Civil work refers to the construction and maintenance of infrastructure such as buildings, roads, and bridges.",
+        "Civil engineering involves designing, constructing, and maintaining physical and natural built environments.",
+        "Civil works include a wide range of projects like road construction, building foundations, and public infrastructure development."
+    ];
+
+    const contactDetails = ["contact", "phone number", "email", "get in touch", "contact details"];
+
+    // Helper function to get a random response
+    function getRandomResponse(responses) {
+        return responses[Math.floor(Math.random() * responses.length)];
+    }
+
     if (greetings.some(greeting => input.includes(greeting))) {
-        output = "Hello, nice to meet you!";
+        output = getRandomResponse(["Hello, nice to meet you!", "Hi there! How can I assist you today?", "Hey! How can I help you?"]);
     } else if (howAreYou.some(question => input.includes(question))) {
-        output = "I'm doing fine, thank you for asking.";
+        output = getRandomResponse(["I'm doing fine, thank you for asking.", "I'm great, thanks for checking in!", "All good here, how can I assist you?"]);
     } else if (nameQuestion.some(question => input.includes(question))) {
-        output = "My name is Jarvis, I'm a chatbot.";
+        output = getRandomResponse(["My name is Tellis, I'm a chatbot.", "I'm Tellis, your friendly assistant.", "You can call me Tellis."]);
     } else if (capabilities.some(question => input.includes(question))) {
-        output = "I can chat with you and answer some simple questions.";
+        output = getRandomResponse(["I can chat with you and answer some simple questions.", "I'm here to assist with your queries and provide information.", "I can help you with information about cold room storage, interior, and civil works."]);
     } else if (jokeRequest.some(request => input.includes(request))) {
-        output = "Why did the chicken go to the seance? To get to the other side.";
+        output = getRandomResponse([
+            "Why did the chicken go to the seance? To get to the other side.",
+            "Why don't scientists trust atoms? Because they make up everything.",
+            "Why was the math book sad? Because it had too many problems."
+        ]);
+    } else if (coldRoomQuestions.some(question => input.includes(question))) {
+        output = getRandomResponse(coldRoomAnswers);
+    } else if (interiorWorksQuestions.some(question => input.includes(question))) {
+        output = getRandomResponse(interiorWorksAnswers);
+    } else if (civilWorksQuestions.some(question => input.includes(question))) {
+        output = getRandomResponse(civilWorksAnswers);
+    } else if (contactDetails.some(detail => input.includes(detail))) {
+        output = "You can contact us at +91 805 069 4999 or email us at architectssmt@gmail.com for more details.";
     } else {
-        output = "Sorry, I don't understand that. Please try something else.";
+        output = getRandomResponse([
+            "Sorry, I don't understand that. Please try something else.",
+            "I'm not sure how to respond to that. Can you rephrase?",
+            "Can you please ask in a different way? I'm here to help."
+        ]);
     }
     return output;
 }
+
 
 // Display the user message on the chat
 function displayUserMessage(message) {
