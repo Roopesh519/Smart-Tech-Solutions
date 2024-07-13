@@ -245,3 +245,6 @@ document.querySelector(".chatbot-toggler").addEventListener("click", function() 
 document.querySelector(".chatbot .chatbot-header .close-btn").addEventListener("click", function() {
     document.body.classList.remove("show-chatbot");
 });
+
+
+// -----------------------------chatbot end ---------------------------------
