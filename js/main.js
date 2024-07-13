@@ -184,9 +184,9 @@ function chatbot(input) {
         output = "You can contact us at +91 805 069 4999 or email us at architectssmt@gmail.com for more details.";
     } else {
         output = getRandomResponse([
-            "Sorry, I don't understand that. Please try something else.",
-            "I'm not sure how to respond to that. Can you rephrase?",
-            "Can you please ask in a different way? I'm here to help."
+            "Sorry, I don't understand that. Please try something else or you can contact us at +91 805 069 4999 or email us at architectssmt@gmail.com for more details.",
+            "I'm not sure how to respond to that. Can you rephrase? or you can contact us at +91 805 069 4999 or email us at architectssmt@gmail.com for more details.",
+            "Can you please ask in a different way? I'm here to help or you can contact us at +91 805 069 4999 or email us at architectssmt@gmail.com for more details."
         ]);
     }
     return output;
