@@ -181,6 +181,8 @@ function chatbot(input) {
         "I love your sense of humor! Let’s find you some answers."
     ];
 
+    const smaartechAnswers = ["Smaartech is a leading provider of cold room solutions. We have our own manufacturing unit for Cold Room PUF Panels and Refrigeration Units, allowing us to deliver the best quality products, timely service, and optimum prices to ensure customer satisfaction."];
+
     const contactDetails = ["contact", "phone number", "email", "get in touch", "contact details"];
 
     const designer = ["designer", "who created you", "creator", "who made you", "who designed you", "who is your father", "father"];
@@ -191,7 +193,11 @@ function chatbot(input) {
 
     const affirm = ["okay", "ok", "k", "ohk"];
 
-    const love = ["I love you", "love you", "love", "I luv you", "I love u", "143", "luv u", "<3", "love u"];
+    const love = ["I love you", "I like you", "I like u", "like you", "like u", "love you", "love", "I luv you", "I love u", "143", "luv u", "<3", "love u"];
+
+    const owner = ["owner", "own", "your owner", "who owns you",]
+
+    const smaartech = ["smaartech engineers", "smaartech", "tell me about the company", "tell about company", "about company"];
 
     // Helper function to get a random response
     function getRandomResponse(responses) {
@@ -230,6 +236,10 @@ function chatbot(input) {
         output = getRandomResponse(affirmAnswers);
     } else if (love.some(detail => input.includes(detail))) {
         output = getRandomResponse(loveAnswers);
+    } else if (owner.some(detail => input.includes(detail))) {
+        output = 'I am owned by Smaartech Engineers';
+    } else if (smaartech.some(detail => input.includes(detail))) {
+        output = getRandomResponse(smaartechAnswers);
     } else {
         output = getRandomResponse([
             "Sorry, I don't understand that. Please try something else or you can contact us at <b>+91 805 069 4999</b> or email us at <b>smaartechengineeers@gmail .com</b> for more details.",
