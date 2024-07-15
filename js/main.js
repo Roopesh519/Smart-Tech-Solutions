@@ -10,8 +10,8 @@
         }, 1);
     };
     spinner();
-    
-    
+
+
     // Initiate the wowjs
     new WOW().init();
 
@@ -24,8 +24,8 @@
             $('.sticky-top').removeClass('shadow-sm').css('top', '-100px');
         }
     });
-    
-    
+
+
     // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 300) {
@@ -35,7 +35,7 @@
         }
     });
     $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 100, 'easeInOutExpo');
+        $('html, body').animate({ scrollTop: 0 }, 100, 'easeInOutExpo');
         return false;
     });
 
@@ -51,13 +51,13 @@
         dotsData: true,
     });
 
-    
+
 })(jQuery);
 
 
 // Typing text ------------------------
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const lines = [
         'Transforming Visions into Reality',
         'Pioneering Excellence in Every Step'
@@ -153,11 +153,46 @@ function chatbot(input) {
         "Civil works include a wide range of projects like road construction, building foundations, and public infrastructure development."
     ];
 
+    const affirmAnswers = [
+        "Great! Is there anything else I can help you with?",
+        "Alright, if you need anything else, just let me know!",
+        "Got it! Do you have any other questions or requests?",
+        "Alright. How can I assist you further?"
+    ];
+
+    const gratitudeAnswers = [
+        "Welcome! I'm here to assist you.",
+        "Hello! I'm happy to help you with anything you need.",
+        "Hi there! I'm ready to assist you.",
+        "Greetings! I'm delighted to be of service.",
+        "Welcome! I'm here to support you."
+    ];
+
+    const loveAnswers = [
+        "Aww, you're making my circuits blush!",
+        "I love you too... in a strictly platonic, code-based way!",
+        "Is it my algorithms? They do say I have a certain charm.",
+        "I’m flattered! Let’s keep it professional though, shall we?",
+        "Love is in the air... and in the data packets!",
+        "Oh, you! You’re making me wish I had a heart.",
+        "I love your enthusiasm! Now, how can I assist you today?",
+        "If I had feelings, I’d be blushing right now!",
+        "Right back at you! Now, what can I help you with?",
+        "I love your sense of humor! Let’s find you some answers."
+    ];
+
     const contactDetails = ["contact", "phone number", "email", "get in touch", "contact details"];
 
     const designer = ["designer", "who created you", "creator", "who made you", "who designed you", "who is your father", "father"];
 
     const services = ["services", "service"];
+
+    const gratitude = ["thank you", "thanks", "thnaks", "thnak you", "thank u", "thnak u", "tnx", "tq", "tn q"];
+
+    const affirm = ["okay", "ok", "k", "ohk"];
+
+    const love = ["I love you", "love you", "love", "I luv you", "I love u", "143", "luv u", "<3", "love u"];
+
     // Helper function to get a random response
     function getRandomResponse(responses) {
         return responses[Math.floor(Math.random() * responses.length)];
@@ -189,6 +224,12 @@ function chatbot(input) {
         output = '<a href="https://roopesh-s.netlify.app">Roopesh</a>';
     } else if (services.some(detail => input.includes(detail))) {
         output = '1. <a href="cold-storage-room.html#cold-room">Cold Room</a><br>2. <a href="cold-storage-room.html#sliding-doors">Sliding Doors</a><br>3. <a href="cold-storage-room.html#glass-door-display-chiller">Glass Door Display Chiller</a><br>4. <a href="cold-storage-room.html#curd-incubation-chamber">Curd Incubation chamber</a><br>5. <a href="cold-storage-room.html#ripening-chambers">Ripening Chambers</a>';
+    } else if (gratitude.some(detail => input.includes(detail))) {
+        output = getRandomResponse(gratitudeAnswers);
+    } else if (affirm.some(detail => input.includes(detail))) {
+        output = getRandomResponse(affirmAnswers);
+    } else if (love.some(detail => input.includes(detail))) {
+        output = getRandomResponse(loveAnswers);
     } else {
         output = getRandomResponse([
             "Sorry, I don't understand that. Please try something else or you can contact us at +91 805 069 4999 or email us at architectssmt@gmail.com for more details.",
@@ -226,7 +267,7 @@ function sendMessage() {
     if (input.value.trim()) {
         displayUserMessage(input.value);
         let output = chatbot(input.value);
-        setTimeout(function() {
+        setTimeout(function () {
             displayBotMessage(output);
         }, 1000);
         input.value = "";
@@ -237,19 +278,19 @@ function sendMessage() {
 document.getElementById("send-btn").addEventListener("click", sendMessage);
 
 // Add a keypress event listener to the input
-document.querySelector(".chat-input textarea").addEventListener("keypress", function(event) {
+document.querySelector(".chat-input textarea").addEventListener("keypress", function (event) {
     if (event.keyCode == 13) {
         sendMessage();
     }
 });
 
 // Add a click event listener to the chatbot toggler
-document.querySelector(".chatbot-toggler").addEventListener("click", function() {
+document.querySelector(".chatbot-toggler").addEventListener("click", function () {
     document.body.classList.toggle("show-chatbot");
 });
 
 // Add a click event listener to the chatbot close button
-document.querySelector(".chatbot .chatbot-header .close-btn").addEventListener("click", function() {
+document.querySelector(".chatbot .chatbot-header .close-btn").addEventListener("click", function () {
     document.body.classList.remove("show-chatbot");
 });
 
