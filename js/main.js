@@ -155,6 +155,9 @@ function chatbot(input) {
 
     const contactDetails = ["contact", "phone number", "email", "get in touch", "contact details"];
 
+    const designer = ["designer", "who created you", "creator", "who made you", "who designed you", "who is your father", "father"];
+
+    const services = ["services", "service"];
     // Helper function to get a random response
     function getRandomResponse(responses) {
         return responses[Math.floor(Math.random() * responses.length)];
@@ -182,6 +185,10 @@ function chatbot(input) {
         output = getRandomResponse(civilWorksAnswers);
     } else if (contactDetails.some(detail => input.includes(detail))) {
         output = "You can contact us at +91 805 069 4999 or email us at architectssmt@gmail.com for more details.";
+    } else if (designer.some(detail => input.includes(detail))) {
+        output = '<a href="https://roopesh-s.netlify.app">Roopesh</a>';
+    } else if (services.some(detail => input.includes(detail))) {
+        output = '1. <a href="cold-storage-room.html#cold-room">Cold Room</a><br>2. <a href="cold-storage-room.html#sliding-doors">Sliding Doors</a><br>3. <a href="cold-storage-room.html#glass-door-display-chiller">Glass Door Display Chiller</a><br>4. <a href="cold-storage-room.html#curd-incubation-chamber">Curd Incubation chamber</a><br>5. <a href="cold-storage-room.html#ripening-chambers">Ripening Chambers</a>';
     } else {
         output = getRandomResponse([
             "Sorry, I don't understand that. Please try something else or you can contact us at +91 805 069 4999 or email us at architectssmt@gmail.com for more details.",
