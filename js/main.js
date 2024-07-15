@@ -219,7 +219,7 @@ function chatbot(input) {
     } else if (civilWorksQuestions.some(question => input.includes(question))) {
         output = getRandomResponse(civilWorksAnswers);
     } else if (contactDetails.some(detail => input.includes(detail))) {
-        output = 'You can contact us at <b>+91 805 069 4999</b> or email us at <b>smaartechengineeers@gmail.com</b> for more details.';
+        output = 'You can contact us at <b>+91 805 069 4999</b> or email us at <b>smaartechengineeers@gmail .com</b> for more details.';
     } else if (designer.some(detail => input.includes(detail))) {
         output = '<a href="https://roopesh-s.netlify.app">Roopesh</a>';
     } else if (services.some(detail => input.includes(detail))) {
@@ -232,9 +232,9 @@ function chatbot(input) {
         output = getRandomResponse(loveAnswers);
     } else {
         output = getRandomResponse([
-            "Sorry, I don't understand that. Please try something else or you can contact us at +91 805 069 4999 or email us at architectssmt@gmail.com for more details.",
-            "I'm not sure how to respond to that. Can you rephrase? or you can contact us at +91 805 069 4999 or email us at architectssmt@gmail.com for more details.",
-            "Can you please ask in a different way? I'm here to help or you can contact us at +91 805 069 4999 or email us at architectssmt@gmail.com for more details."
+            "Sorry, I don't understand that. Please try something else or you can contact us at <b>+91 805 069 4999</b> or email us at <b>smaartechengineeers@gmail .com</b> for more details.",
+            "I'm not sure how to respond to that. Can you rephrase? or you can contact us at <b>+91 805 069 4999</b> or email us at <b>smaartechengineeers@gmail .com</b> for more details.",
+            "Can you please ask in a different way? I'm here to help or you can contact us at <b>+91 805 069 4999</b> or email us at <b>smaartechengineeers@gmail .com</b> for more details."
         ]);
     }
     return output;
