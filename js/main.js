@@ -181,6 +181,13 @@ function chatbot(input) {
         "I love your sense of humor! Let’s find you some answers."
     ];
 
+    const roopeshAnswers = [
+        'Roopesh is a dynamic web developer who has designed this site. If you have any queries or freelancing works please reach out to Roopesh. <a href="https://roopesh-s.netlify.app">Click here to reach out to me</a>',
+        'This site was designed by Roopesh, a dynamic web developer. If you have any queries or are interested in freelancing work, please feel free to reach out to Roopesh. <a href="https://roopesh-s.netlify.app">Click here to reach out to me</a>',
+        'The designer of this site is Roopesh, a skilled and dynamic web developer. If you have any questions or need freelancing services, Roopesh is available to help. <a href="https://roopesh-s.netlify.app">Click here to reach out to me</a>',
+        'Roopesh, a talented and dynamic web developer, is the creative mind behind this site. For any queries or freelance opportunities, you can contact Roopesh directly. <a href="https://roopesh-s.netlify.app">Click here to reach out to me</a>'
+    ];
+
     const smaartechAnswers = ["Smaartech is a leading provider of cold room solutions. We have our own manufacturing unit for Cold Room PUF Panels and Refrigeration Units, allowing us to deliver the best quality products, timely service, and optimum prices to ensure customer satisfaction."];
 
     const contactDetails = ["contact", "phone number", "email", "get in touch", "contact details"];
@@ -198,6 +205,9 @@ function chatbot(input) {
     const owner = ["owner", "own", "your owner", "who owns you",]
 
     const smaartech = ["smaartech engineers", "smaartech", "tell me about the company", "tell about company", "about company"];
+
+    const roopesh = ["who is roopesh", "roopesh", "roopesh?",];
+
 
     // Helper function to get a random response
     function getRandomResponse(responses) {
@@ -240,6 +250,8 @@ function chatbot(input) {
         output = 'I am owned by Smaartech Engineers';
     } else if (smaartech.some(detail => input.includes(detail))) {
         output = getRandomResponse(smaartechAnswers);
+    } else if (roopesh.some(detail => input.includes(detail))) {
+        output = getRandomResponse(roopeshAnswers);
     } else {
         output = getRandomResponse([
             "Sorry, I don't understand that. Please try something else or you can contact us at <b>+91 805 069 4999</b> or email us at <b>smaartechengineeers@gmail .com</b> for more details.",
