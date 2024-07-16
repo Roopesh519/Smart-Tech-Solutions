@@ -192,7 +192,7 @@ function chatbot(input) {
 
     const contactDetails = ["contact", "phone number", "email", "get in touch", "contact details"];
 
-    const designer = ["designer", "who created you", "creator", "who made you", "who designed you", "who is your father", "father"];
+    const designer = ["designer", "develop", "developer", "developed", "who created you", "creator", "who made you", "who designed you", "who is your father", "father"];
 
     const services = ["services", "service"];
 
