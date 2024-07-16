@@ -194,7 +194,14 @@ function chatbot(input) {
 
     const byeAnswers = ["Have a nice day", "See you around", "Hasta la Vista...", "I wish you a good day"];
 
-    const bye = ["bye", "goodbye", "see you"];
+    const chatgpt = ["chatgpt", "gemini", "bing"];
+
+    const chatgptAnswers = ["I am a chatbot built using the Dialogflow framework. Unlike ChatGPT/Gemini, I do not operate on a large language model (LLM).",
+        "My functionality is powered by Dialogflow. I don't utilize a large language model (LLM) like ChatGPT/Gemini.",
+        "I operate through the Dialogflow platform and do not use a large language model (LLM) like ChatGPT/Gemini."
+    ];
+
+    const bye = ["bye", "goodbye", "see you", "close", "hate", "useless", "I hate you"];
 
     const apppreciate = ["you are good", "good", "gud", "great", "great work", "great job", "appreciate"];
 
@@ -262,6 +269,8 @@ function chatbot(input) {
         output = getRandomResponse(roopeshAnswers);
     } else if (apppreciate.some(detail => input.includes(detail))) {
         output = getRandomResponse(appreciateAnswers);
+    } else if (chatgpt.some(detail => input.includes(detail))) {
+        output = getRandomResponse(chatgptAnswers);
     } else if (bye.some(detail => input.includes(detail))) {
         output = getRandomResponse(byeAnswers);
         closeChatbot();
