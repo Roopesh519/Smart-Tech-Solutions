@@ -190,6 +190,14 @@ function chatbot(input) {
 
     const smaartechAnswers = ["Smaartech is a leading provider of cold room solutions. We have our own manufacturing unit for Cold Room PUF Panels and Refrigeration Units, allowing us to deliver the best quality products, timely service, and optimum prices to ensure customer satisfaction."];
 
+    const appreciateAnswers = ["Thank you, how can I help you further"];
+
+    const byeAnswers = ["Have a nice day", "See you around", "Hasta la Vista...", "I wish you a good day"];
+
+    const bye = ["bye", "goodbye", "see you"];
+
+    const apppreciate = ["you are good", "good", "gud", "great", "great work", "great job", "appreciate"];
+
     const contactDetails = ["contact", "phone number", "email", "get in touch", "contact details"];
 
     const designer = ["designer", "develop", "developer", "developed", "who created you", "creator", "who made you", "who designed you", "who is your father", "father"];
@@ -252,6 +260,11 @@ function chatbot(input) {
         output = getRandomResponse(smaartechAnswers);
     } else if (roopesh.some(detail => input.includes(detail))) {
         output = getRandomResponse(roopeshAnswers);
+    } else if (apppreciate.some(detail => input.includes(detail))) {
+        output = getRandomResponse(appreciateAnswers);
+    } else if (bye.some(detail => input.includes(detail))) {
+        output = getRandomResponse(byeAnswers);
+        closeChatbot();
     } else {
         output = getRandomResponse([
             "Sorry, I don't understand that. Please try something else or you can contact us at <b>+91 805 069 4999</b> or email us at <b>smaartechengineeers@gmail .com</b> for more details.",
@@ -260,6 +273,12 @@ function chatbot(input) {
         ]);
     }
     return output;
+}
+
+async function closeChatbot() {
+    const close = document.getElementById('close');
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    close.click();
 }
 
 
