@@ -346,3 +346,24 @@ document.querySelector(".chatbot .chatbot-header .close-btn").addEventListener("
 
 
 // -----------------------------chatbot end ---------------------------------
+
+    document.addEventListener('DOMContentLoaded', function() {
+      let startTime = Date.now();
+      let percentage = 0;
+      const loadingText = document.getElementById('loading-percentage');
+
+      const interval = setInterval(() => {
+        let elapsedTime = Date.now() - startTime;
+        percentage = Math.min(100, Math.floor((elapsedTime / 2000) * 100)); // Assume loading should take 2 seconds
+        loadingText.textContent = `Loading... ${percentage}%`;
+
+        if (percentage >= 100) {
+          clearInterval(interval);
+        }
+      }, 100); // Update every 100 milliseconds
+    });
+
+    window.addEventListener('load', function() {
+      document.getElementById('loading-screen').style.display = 'none';
+    });
+ 
