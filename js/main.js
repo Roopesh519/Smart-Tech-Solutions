@@ -112,7 +112,7 @@ function chatbot(input) {
 
     const greetings = ["hello", "hi", "hey"];
     const howAreYou = ["how are you", "how's it going", "how are you doing"];
-    const nameQuestion = ["what is your name", "who are you"];
+    const nameQuestion = ["what is your name", "who are you", "tell me about your self", "tell me about you"];
     const capabilities = ["what can you do", "what are your capabilities"];
     const jokeRequest = ["tell me a joke", "make me laugh", "say something funny"];
 
