@@ -120,7 +120,7 @@ function chatbot(input) {
         "what is a cold room", "explain cold room storage", "tell me about cold rooms",
         "how does a cold room work", "uses of cold room storage",
         "cold room construction", "cold room applications", "cold room temperature range",
-        "cold room panels", "cold room accessories", "cold room standard sizes"
+        "cold room panels", "cold room accessories", "cold room standard sizes", "cold room"
     ];
     const coldRoomAnswers = [
         "A cold room is a large refrigerated space designed to store perishable goods at low temperatures.",
@@ -135,7 +135,7 @@ function chatbot(input) {
 
     const interiorWorksQuestions = [
         "what is interior work", "explain interior design", "what do interior works involve",
-        "types of interior work", "services for interior works"
+        "types of interior work", "services for interior works", "interior work"
     ];
     const interiorWorksAnswers = [
         "Interior work involves designing and creating functional and aesthetically pleasing indoor spaces.",
@@ -145,7 +145,7 @@ function chatbot(input) {
 
     const civilWorksQuestions = [
         "what is civil work", "explain civil engineering", "what do civil works involve",
-        "types of civil work", "services for civil works"
+        "types of civil work", "services for civil works", "civil work"
     ];
     const civilWorksAnswers = [
         "Civil work refers to the construction and maintenance of infrastructure such as buildings, roads, and bridges.",
