@@ -371,19 +371,38 @@ document.querySelector(".chatbot .chatbot-header .close-btn").addEventListener("
     // --------------------image transition--------------------------
 
     document.addEventListener('DOMContentLoaded', function() {
-        const container = document.querySelector('.image-container');
-        const scrollContainer = document.querySelector('.image-scroll');
-        const images = document.querySelectorAll('.image-scroll img');
-        let currentIndex = 0;
+        const containers = document.querySelectorAll('.image-container');
       
-        container.addEventListener('wheel', function(event) {
-          event.preventDefault();
-          if (event.deltaY > 0) {
-            currentIndex = (currentIndex + 1) % images.length; // Move to next image
-          } else {
-            currentIndex = (currentIndex - 1 + images.length) % images.length; // Move to previous image
+        containers.forEach(container => {
+          const scrollContainer = container.querySelector('.image-scroll');
+          const images = container.querySelectorAll('.image-scroll img');
+          const leftArrow = container.querySelector('.left-arrow');
+          const rightArrow = container.querySelector('.right-arrow');
+          let currentIndex = 0;
+      
+          function updateImagePosition() {
+            scrollContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
           }
-          scrollContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+      
+          leftArrow.addEventListener('click', function() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateImagePosition();
+          });
+      
+          rightArrow.addEventListener('click', function() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateImagePosition();
+          });
+      
+          container.addEventListener('wheel', function(event) {
+            event.preventDefault();
+            if (event.deltaY > 0) {
+              currentIndex = (currentIndex + 1) % images.length; // Move to next image
+            } else {
+              currentIndex = (currentIndex - 1 + images.length) % images.length; // Move to previous image
+            }
+            updateImagePosition();
+          });
         });
       });
       

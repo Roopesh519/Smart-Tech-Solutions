@@ -103,8 +103,8 @@
   }
 
   /* ----------------Image container of cold storage rooms page -----------------*/
-
   .image-container {
+    position: relative;
     width: 100%; /* Full width container */
     overflow: hidden; /* Hide overflow */
     border-radius: 15px; /* Rounded edges */
@@ -118,9 +118,35 @@
   
   .image-scroll img {
     border-radius: 15px; /* Rounded edges for images */
-    flex: 0 0 100%; /* Each image takes full width */
+    flex: 0 0 auto; /* Each image takes its natural width */
     max-width: 100%; /* Ensure images are responsive */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Cover the container maintaining aspect ratio */
+    width: 100%; /* Make each image take full width of container */
+    aspect-ratio: 1 / 1; /* Ensure 1:1 aspect ratio */
   }
   
-
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  .left-arrow {
+    left: 10px;
+  }
+  
+  .right-arrow {
+    right: 10px;
+  }
+  
+  
   /* ---------------------End of Image container of cold storage rooms page ------------------------ */
