@@ -367,3 +367,23 @@ document.querySelector(".chatbot .chatbot-header .close-btn").addEventListener("
       document.getElementById('loading-screen').style.display = 'none';
     });
  
+
+    // --------------------image transition--------------------------
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const container = document.querySelector('.image-container');
+        const scrollContainer = document.querySelector('.image-scroll');
+        const images = document.querySelectorAll('.image-scroll img');
+        let currentIndex = 0;
+      
+        container.addEventListener('wheel', function(event) {
+          event.preventDefault();
+          if (event.deltaY > 0) {
+            currentIndex = (currentIndex + 1) % images.length; // Move to next image
+          } else {
+            currentIndex = (currentIndex - 1 + images.length) % images.length; // Move to previous image
+          }
+          scrollContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        });
+      });
+      
