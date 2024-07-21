@@ -170,9 +170,9 @@
     right: 0;
     left: 0;
     width: max-content;
-    height: 40px;
+    height: 20px; /* Adjusted height */
     margin: 0 auto;
-    padding: 10px 15px;
+    padding: 5px 7.5px; /* Adjusted padding */
     transform: translateY(50%);
     overflow: hidden;
     z-index: 1;
@@ -180,22 +180,22 @@
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 20px;
+    margin-bottom: 20px;
 }
 
 .button {
-    width: 20px;
-    height: 20px;
-    margin: 0 5px;
+    width: 10px; /* Adjusted width */
+    height: 10px; /* Adjusted height */
+    margin: 0 2.5px; /* Adjusted margin */
     background-color: #fff;
-    border-radius: 20px;
+    border-radius: 10px;
     cursor: pointer;
     transition: 0.3s ease width;
 }
 
 .button.active {
-    width: 60px;
+    width: 30px; /* Adjusted width */
     cursor: auto;
 }
 
-  
   /* ---------------------End of Image container of cold storage rooms page ------------------------ */
