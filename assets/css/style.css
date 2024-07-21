@@ -103,13 +103,13 @@
   }
 
   /* ----------------Image container of cold storage rooms page -----------------*/
-  body {
+  /* body {
     height: 100%;
     margin: 0;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
     background-color: #e91e63;
-}
+} */
 
 .image-container {
     position: relative;
