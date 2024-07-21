@@ -103,30 +103,46 @@
   }
 
   /* ----------------Image container of cold storage rooms page -----------------*/
-  .image-container {
+  body {
+    height: 100%;
+    margin: 0;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #e91e63;
+}
+
+.image-container {
     position: relative;
-    width: 100%; /* Full width container */
-    overflow: hidden; /* Hide overflow */
-    border-radius: 15px; /* Rounded edges */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
-  }
-  
-  .image-scroll {
-    display: flex; /* Display images in a row */
-    transition: transform 0.5s ease; /* Smooth transition for scrolling */
-  }
-  
-  .image-scroll img {
-    border-radius: 15px; /* Rounded edges for images */
-    flex: 0 0 auto; /* Each image takes its natural width */
-    max-width: 100%; /* Ensure images are responsive */
-    height: auto; /* Maintain aspect ratio */
-    object-fit: cover; /* Cover the container maintaining aspect ratio */
-    width: 100%; /* Make each image take full width of container */
-    aspect-ratio: 1 / 1; /* Ensure 1:1 aspect ratio */
-  }
-  
-  .arrow {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image-scroll {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.image-scroll img {
+    border-radius: 15px;
+    flex: 0 0 auto;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transform: scale(0.95);
+}
+
+.image-scroll img.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -138,15 +154,48 @@
     border-radius: 50%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-  }
-  
-  .left-arrow {
+}
+
+.left-arrow {
     left: 10px;
-  }
-  
-  .right-arrow {
+}
+
+.right-arrow {
     right: 10px;
-  }
-  
+}
+
+.pagination-dots {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    left: 0;
+    width: max-content;
+    height: 40px;
+    margin: 0 auto;
+    padding: 10px 15px;
+    transform: translateY(50%);
+    overflow: hidden;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+}
+
+.button {
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    background-color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s ease width;
+}
+
+.button.active {
+    width: 60px;
+    cursor: auto;
+}
+
   
   /* ---------------------End of Image container of cold storage rooms page ------------------------ */

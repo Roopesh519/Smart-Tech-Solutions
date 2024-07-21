@@ -370,39 +370,100 @@ document.querySelector(".chatbot .chatbot-header .close-btn").addEventListener("
 
     // --------------------image transition--------------------------
 
+    
     document.addEventListener('DOMContentLoaded', function() {
         const containers = document.querySelectorAll('.image-container');
-      
+    
         containers.forEach(container => {
-          const scrollContainer = container.querySelector('.image-scroll');
-          const images = container.querySelectorAll('.image-scroll img');
-          const leftArrow = container.querySelector('.left-arrow');
-          const rightArrow = container.querySelector('.right-arrow');
-          let currentIndex = 0;
-      
-          function updateImagePosition() {
-            scrollContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-          }
-      
-          leftArrow.addEventListener('click', function() {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            updateImagePosition();
-          });
-      
-          rightArrow.addEventListener('click', function() {
-            currentIndex = (currentIndex + 1) % images.length;
-            updateImagePosition();
-          });
-      
-          container.addEventListener('wheel', function(event) {
-            event.preventDefault();
-            if (event.deltaY > 0) {
-              currentIndex = (currentIndex + 1) % images.length; // Move to next image
-            } else {
-              currentIndex = (currentIndex - 1 + images.length) % images.length; // Move to previous image
+            const scrollContainer = container.querySelector('.image-scroll');
+            const images = container.querySelectorAll('.image-scroll img');
+            const leftArrow = container.querySelector('.left-arrow');
+            const rightArrow = container.querySelector('.right-arrow');
+            const paginationDots = container.querySelector('#app');
+            let currentIndex = 0;
+            let autoPlayInterval;
+    
+            // Create dots
+            images.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('button');
+                if (index === currentIndex) {
+                    dot.classList.add('active');
+                }
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateImagePosition();
+                });
+                paginationDots.appendChild(dot);
+            });
+    
+            function updateImagePosition() {
+                images.forEach((img, index) => {
+                    img.classList.toggle('active', index === currentIndex);
+                    paginationDots.children[index].classList.toggle('active', index === currentIndex);
+                });
+                scrollContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
             }
-            updateImagePosition();
-          });
+    
+            function startAutoPlay() {
+                autoPlayInterval = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    updateImagePosition();
+                }, 3000); // Change image every 3 seconds
+            }
+    
+            function stopAutoPlay() {
+                clearInterval(autoPlayInterval);
+            }
+    
+            leftArrow.addEventListener('click', function() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                updateImagePosition();
+            });
+    
+            rightArrow.addEventListener('click', function() {
+                currentIndex = (currentIndex + 1) % images.length;
+                updateImagePosition();
+            });
+    
+            container.addEventListener('wheel', function(event) {
+                event.preventDefault();
+                if (event.deltaY > 0) {
+                    currentIndex = (currentIndex + 1) % images.length;
+                } else {
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                }
+                updateImagePosition();
+            });
+    
+            container.addEventListener('mouseenter', stopAutoPlay);
+            container.addEventListener('mouseleave', startAutoPlay);
+    
+            // Touch events for swipe
+            let startX = 0;
+            let endX = 0;
+    
+            container.addEventListener('touchstart', (event) => {
+                startX = event.touches[0].clientX;
+            });
+    
+            container.addEventListener('touchmove', (event) => {
+                endX = event.touches[0].clientX;
+            });
+    
+            container.addEventListener('touchend', () => {
+                if (startX - endX > 50) {
+                    // Swipe left
+                    currentIndex = (currentIndex + 1) % images.length;
+                } else if (endX - startX > 50) {
+                    // Swipe right
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                }
+                updateImagePosition();
+            });
+    
+            startAutoPlay(); // Start auto-play on load
+            updateImagePosition(); // Initial position
         });
-      });
-      
+    });
+    
