@@ -183,7 +183,7 @@
     margin-bottom: 10px;
 }
 
-.button {
+.image-container .button {
     width: 10px; /* Adjusted width */
     height: 10px; /* Adjusted height */
     margin: 0 2.5px; /* Adjusted margin */
@@ -193,7 +193,7 @@
     transition: 0.3s ease width;
 }
 
-.button.active {
+.image-container .button.active {
     width: 30px; /* Adjusted width */
     cursor: auto;
 }
