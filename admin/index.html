@@ -1,13 +1,37 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Content Manager</title>
-    <script src="https://unpkg.com/netlify-cms@2.10.54/dist/netlify-cms.js"></script>
-  </head>
-  <body>
-    <script>
-      console.log("Netlify CMS loaded successfully"); // You can use this for debugging
-    </script>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>Content Manager</title>
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+</head>
+<body>
+  <script>
+    CMS.init({
+      config: {
+        backend: {
+          name: 'git-gateway',
+          branch: 'main',
+        },
+        media_folder: 'static/uploads',
+        public_folder: '/uploads',
+        collections: [
+          {
+            name: 'updates',
+            label: 'Updates',
+            folder: 'content/updates',
+            create: true,
+            slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
+            fields: [
+              { label: 'Title', name: 'title', widget: 'string' },
+              { label: 'Date', name: 'date', widget: 'datetime' },
+              { label: 'Body', name: 'body', widget: 'markdown' },
+              { label: 'Image', name: 'image', widget: 'image' }
+            ]
+          }
+        ]
+      }
+    });
+  </script>
+</body>
 </html>
