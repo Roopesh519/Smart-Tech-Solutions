@@ -467,3 +467,20 @@ document.querySelector(".chatbot .chatbot-header .close-btn").addEventListener("
         });
     });
     
+    // updates section
+
+    async function fetchUpdates() {
+        const response = await fetch('/content/updates/index.json');
+        const updates = await response.json();
+        
+        const gallery = document.getElementById('updates-gallery');
+        updates.forEach(update => {
+          const img = document.createElement('img');
+          img.src = update.image;
+          img.alt = update.title;
+          gallery.appendChild(img);
+        });
+      }
+      
+      document.addEventListener('DOMContentLoaded', fetchUpdates);
+      
