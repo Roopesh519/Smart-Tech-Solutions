@@ -467,7 +467,7 @@ document.querySelector(".chatbot .chatbot-header .close-btn").addEventListener("
         });
     });
     
-    // updates section
+    // updates section-------------------------------------------------
 
     async function fetchUpdates() {
         const response = await fetch('/content/updates/index.json');
