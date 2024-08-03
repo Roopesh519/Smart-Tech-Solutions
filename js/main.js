@@ -347,140 +347,167 @@ document.querySelector(".chatbot .chatbot-header .close-btn").addEventListener("
 
 // -----------------------------chatbot end ---------------------------------
 
-    document.addEventListener('DOMContentLoaded', function() {
-      let startTime = Date.now();
-      let percentage = 0;
-      const loadingText = document.getElementById('loading-percentage');
+document.addEventListener('DOMContentLoaded', function () {
+    let startTime = Date.now();
+    let percentage = 0;
+    const loadingText = document.getElementById('loading-percentage');
 
-      const interval = setInterval(() => {
+    const interval = setInterval(() => {
         let elapsedTime = Date.now() - startTime;
         percentage = Math.min(100, Math.floor((elapsedTime / 2000) * 100));
         loadingText.textContent = `Loading... ${percentage}%`;
 
         if (percentage >= 100) {
-          clearInterval(interval);
+            clearInterval(interval);
         }
-      }, 100);
-    });
+    }, 100);
+});
 
-    window.addEventListener('load', function() {
-      document.getElementById('loading-screen').style.display = 'none';
-    });
- 
+window.addEventListener('load', function () {
+    document.getElementById('loading-screen').style.display = 'none';
+});
 
-    // --------------------image transition--------------------------
 
-    
-    document.addEventListener('DOMContentLoaded', function() {
-        const containers = document.querySelectorAll('.image-container');
-    
-        containers.forEach(container => {
-            const scrollContainer = container.querySelector('.image-scroll');
-            const images = container.querySelectorAll('.image-scroll img');
-            const leftArrow = container.querySelector('.left-arrow');
-            const rightArrow = container.querySelector('.right-arrow');
-            const paginationDots = container.querySelector('#app');
-            let currentIndex = 0;
-            let autoPlayInterval;
-    
-            // Create dots
-            images.forEach((_, index) => {
-                const dot = document.createElement('div');
-                dot.classList.add('button');
-                if (index === currentIndex) {
-                    dot.classList.add('active');
-                }
-                dot.addEventListener('click', () => {
-                    currentIndex = index;
-                    updateImagePosition();
-                });
-                paginationDots.appendChild(dot);
-            });
-    
-            function updateImagePosition() {
-                images.forEach((img, index) => {
-                    img.classList.toggle('active', index === currentIndex);
-                    paginationDots.children[index].classList.toggle('active', index === currentIndex);
-                });
-                scrollContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+// --------------------image transition--------------------------
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const containers = document.querySelectorAll('.image-container');
+
+    containers.forEach(container => {
+        const scrollContainer = container.querySelector('.image-scroll');
+        const images = container.querySelectorAll('.image-scroll img');
+        const leftArrow = container.querySelector('.left-arrow');
+        const rightArrow = container.querySelector('.right-arrow');
+        const paginationDots = container.querySelector('#app');
+        let currentIndex = 0;
+        let autoPlayInterval;
+
+        // Create dots
+        images.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('button');
+            if (index === currentIndex) {
+                dot.classList.add('active');
             }
-    
-            function startAutoPlay() {
-                autoPlayInterval = setInterval(() => {
-                    currentIndex = (currentIndex + 1) % images.length;
-                    updateImagePosition();
-                }, 3000); // Change image every 3 seconds
-            }
-    
-            function stopAutoPlay() {
-                clearInterval(autoPlayInterval);
-            }
-    
-            leftArrow.addEventListener('click', function() {
-                currentIndex = (currentIndex - 1 + images.length) % images.length;
+            dot.addEventListener('click', () => {
+                currentIndex = index;
                 updateImagePosition();
             });
-    
-            rightArrow.addEventListener('click', function() {
+            paginationDots.appendChild(dot);
+        });
+
+        function updateImagePosition() {
+            images.forEach((img, index) => {
+                img.classList.toggle('active', index === currentIndex);
+                paginationDots.children[index].classList.toggle('active', index === currentIndex);
+            });
+            scrollContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
                 currentIndex = (currentIndex + 1) % images.length;
                 updateImagePosition();
-            });
-    
-            container.addEventListener('wheel', function(event) {
-                event.preventDefault();
-                if (event.deltaY > 0) {
-                    currentIndex = (currentIndex + 1) % images.length;
-                } else {
-                    currentIndex = (currentIndex - 1 + images.length) % images.length;
-                }
-                updateImagePosition();
-            });
-    
-            container.addEventListener('mouseenter', stopAutoPlay);
-            container.addEventListener('mouseleave', startAutoPlay);
-    
-            // Touch events for swipe
-            let startX = 0;
-            let endX = 0;
-    
-            container.addEventListener('touchstart', (event) => {
-                startX = event.touches[0].clientX;
-            });
-    
-            container.addEventListener('touchmove', (event) => {
-                endX = event.touches[0].clientX;
-            });
-    
-            container.addEventListener('touchend', () => {
-                if (startX - endX > 50) {
-                    // Swipe left
-                    currentIndex = (currentIndex + 1) % images.length;
-                } else if (endX - startX > 50) {
-                    // Swipe right
-                    currentIndex = (currentIndex - 1 + images.length) % images.length;
-                }
-                updateImagePosition();
-            });
-    
-            startAutoPlay(); // Start auto-play on load
-            updateImagePosition(); // Initial position
-        });
-    });
-    
-    // updates section-------------------------------------------------
+            }, 3000); // Change image every 3 seconds
+        }
 
-    async function fetchUpdates() {
-        const response = await fetch('/content/updates/index.json');
-        const updates = await response.json();
-        
-        const gallery = document.getElementById('updates-gallery');
-        updates.forEach(update => {
-          const img = document.createElement('img');
-          img.src = update.image;
-          img.alt = update.title;
-          gallery.appendChild(img);
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+
+        leftArrow.addEventListener('click', function () {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateImagePosition();
         });
-      }
-      
-      document.addEventListener('DOMContentLoaded', fetchUpdates);
-      
+
+        rightArrow.addEventListener('click', function () {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateImagePosition();
+        });
+
+        container.addEventListener('wheel', function (event) {
+            event.preventDefault();
+            if (event.deltaY > 0) {
+                currentIndex = (currentIndex + 1) % images.length;
+            } else {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+            }
+            updateImagePosition();
+        });
+
+        container.addEventListener('mouseenter', stopAutoPlay);
+        container.addEventListener('mouseleave', startAutoPlay);
+
+        // Touch events for swipe
+        let startX = 0;
+        let endX = 0;
+
+        container.addEventListener('touchstart', (event) => {
+            startX = event.touches[0].clientX;
+        });
+
+        container.addEventListener('touchmove', (event) => {
+            endX = event.touches[0].clientX;
+        });
+
+        container.addEventListener('touchend', () => {
+            if (startX - endX > 50) {
+                // Swipe left
+                currentIndex = (currentIndex + 1) % images.length;
+            } else if (endX - startX > 50) {
+                // Swipe right
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+            }
+            updateImagePosition();
+        });
+
+        startAutoPlay(); // Start auto-play on load
+        updateImagePosition(); // Initial position
+    });
+});
+
+// updates section-------------------------------------------------
+
+async function fetchUpdates() {
+    const response = await fetch('/content/updates/index.json');
+    const updates = await response.json();
+
+    const gallery = document.getElementById('updates-gallery');
+    updates.forEach(update => {
+        const img = document.createElement('img');
+        img.src = update.image;
+        img.alt = update.title;
+        gallery.appendChild(img);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', fetchUpdates);
+
+
+// gallery updates -----------------------------------------------------------
+
+// Get the modal-----------------------------------------------------------------
+var modal = document.getElementById("imageModal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var images = document.querySelectorAll('.owl-courses-item .item img');
+var modalImg = document.getElementById("modalImage");
+var captionText = document.getElementById("caption");
+
+images.forEach(img => {
+    img.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+    }
+});
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+    modal.style.display = "none";
+}
+
