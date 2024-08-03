@@ -234,7 +234,7 @@ function chatbot(input) {
     } else if (howAreYou.some(question => input.includes(question))) {
         output = getRandomResponse(["I'm doing fine, thank you for asking.", "I'm great, thanks for checking in!", "All good here, how can I assist you?"]);
     } else if (nameQuestion.some(question => input.includes(question))) {
-        output = getRandomResponse(["My name is Tellis, I'm a chatbot.", "I'm Tellis, your friendly assistant.", "You can call me Tellis."]);
+        output = getRandomResponse(["My name is Smaart Bot, I'm a chatbot.", "I'm Smaart Bot, your friendly assistant.", "You can call me Smaart Bot."]);
     } else if (capabilities.some(question => input.includes(question))) {
         output = getRandomResponse(["I can chat with you and answer some simple questions.", "I'm here to assist with your queries and provide information.", "I can help you with information about cold room storage, interior, and civil works."]);
     } else if (jokeRequest.some(request => input.includes(request))) {
@@ -252,7 +252,7 @@ function chatbot(input) {
     } else if (contactDetails.some(detail => input.includes(detail))) {
         output = 'You can contact us at <b>+91 805 069 4999</b> or email us at <b>smaartechengineeers@gmail .com</b> for more details.';
     } else if (designer.some(detail => input.includes(detail))) {
-        output = '<a href="https://roopesh-s.netlify.app">Roopesh</a>';
+        output = '<a href="https://roopesh-s.netlify.app">Smaartech Engineers</a>';
     } else if (services.some(detail => input.includes(detail))) {
         output = '1. <a href="cold-storage-room.html#cold-room">Cold Room</a><br>2. <a href="cold-storage-room.html#sliding-doors">Sliding Doors</a><br>3. <a href="cold-storage-room.html#glass-door-display-chiller">Glass Door Display Chiller</a><br>4. <a href="cold-storage-room.html#curd-incubation-chamber">Curd Incubation chamber</a><br>5. <a href="cold-storage-room.html#ripening-chambers">Ripening Chambers</a>';
     } else if (gratitude.some(detail => input.includes(detail))) {
